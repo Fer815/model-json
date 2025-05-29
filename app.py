@@ -22,9 +22,9 @@ class_names = ['con_mascarilla', 'mascarilla_mal_puesta', 'sin_mascarilla']
 # 4. Función para preprocesar imagen
 def procesar_imagen(file_bytes):
     imagen = Image.open(io.BytesIO(file_bytes)).convert('RGB')
-    imagen = imagen.resize((150, 150))  # Cambia si tu modelo usa otra dimensión
-    imagen = np.array(imagen) / 255.0
-    imagen = np.expand_dims(imagen, axis=0)
+    imagen = imagen.resize((300, 300))  # ✅ Ajuste a 300x300
+    imagen = np.array(imagen) / 255.0   # Normalizar
+    imagen = np.expand_dims(imagen, axis=0)  # Agregar dimensión batch
     return imagen
 
 # 5. Ruta para predicción
